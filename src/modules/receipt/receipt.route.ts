@@ -1,10 +1,10 @@
 import express from 'express';
 import receiptUpload from '../../middleware/receipt.middleware';
-import { receiptUploadHandler } from './receipt.controller';
+import { scanReceipt } from './receipt.controller';
 
 // api/receipt
 const router = express.Router();
 
-router.post('/upload', receiptUpload, receiptUploadHandler);
+router.post('/scan', receiptUpload, scanReceipt);
 
 export default router;
