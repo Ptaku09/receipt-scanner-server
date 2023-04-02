@@ -70,8 +70,8 @@ const createNamePricePairs = (lines: string[]): ProductInfo[] => {
 };
 
 const extractName = (line: string): string => {
-  const nameIndexEnd = line.search(/[A-G] \d/);
-  return nameIndexEnd !== -1 ? line.slice(0, nameIndexEnd - 1) : ProductName.ERROR;
+  const name = line.match(/^.*?(?=\s\S\s)/);
+  return name ? name[0] : ProductName.ERROR;
 };
 
 const extractPrice = (line: string): number => {
