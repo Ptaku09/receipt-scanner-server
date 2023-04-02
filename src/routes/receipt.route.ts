@@ -1,6 +1,6 @@
 import express from 'express';
-import receiptUpload from '../../middleware/receipt.middleware';
-import { scanReceipt } from './receipt.controller';
+import receiptUpload from '../middleware/receipt.middleware';
+import { scanReceipt } from '../controllers/receipt.controller';
 
 // api/receipt
 const router = express.Router();

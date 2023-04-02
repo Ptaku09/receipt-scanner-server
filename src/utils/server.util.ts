@@ -1,8 +1,8 @@
 import express, { Request, Response } from 'express';
 import helmet from 'helmet';
-import receiptRoute from '../modules/receipt/receipt.route';
+import receiptRoute from '../routes/receipt.route';
 
-export const createServer = () => {
+export const server = () => {
   const app = express();
 
   app.use(express.json());

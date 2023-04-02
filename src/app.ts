@@ -1,10 +1,10 @@
-import { createServer } from './utils/createServer';
+import { server } from './utils/server.util';
 import dotenv from 'dotenv';
-import { logger } from './utils/logger';
+import { logger } from './utils/logger.util';
 
 dotenv.config();
 
-const serverStarter = createServer();
+const serverStarter = server();
 
 serverStarter.listen(
   {

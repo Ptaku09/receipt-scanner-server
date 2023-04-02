@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { logger } from '../../utils/logger';
+import { logger } from '../utils/logger.util';
 import * as Tesseract from 'tesseract.js';
-import { ProductCategory, ProductInfo, ProductName, ProductPrice } from '../../models/receipt.model';
+import { ProductCategory, ProductInfo, ProductName, ProductPrice } from '../models/receipt.model';
 import { StatusCodes } from 'http-status-codes';
 
 export const scanReceipt = async (req: Request, res: Response) => {
