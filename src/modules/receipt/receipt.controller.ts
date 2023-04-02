@@ -32,17 +32,17 @@ const scanText = async (receipt: Express.Multer.File) => {
   return text;
 };
 
-const formatReceipt = (rawText: string): { name: string; price: number }[] => {
+const formatReceipt = (rawText: string): { name: string; price: any }[] => {
   const lines = rawText.split('\n');
   const filteredLines = lines.filter((line: string) => line.length !== 0);
 
   return filteredLines.map((line: string) => {
     const nameIndexEnd = line.search(/[A-G] \d/);
-    const prince = line.match(/x\d+(,|.)\d+/);
+    const price = line.match(/\d+(,|(\.))\d{2}(?=\S$)/);
 
     return {
       name: nameIndexEnd !== -1 ? line.slice(0, nameIndexEnd - 1) : 'NOT FOUND',
-      price: prince ? parseFloat(prince[0].slice(1).replace(',', '.')) : 0,
+      price: price ? parseFloat(price[0].replace(',', '.')) : 0,
     };
   });
 };
