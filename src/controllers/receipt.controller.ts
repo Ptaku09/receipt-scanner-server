@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { logger } from '../utils/logger.util';
 import * as Tesseract from 'tesseract.js';
-import { ProductCategory, ProductInfo, ProductName, ProductPrice } from '../models/receipt.model';
+import { ProductCategory, ProductInfo, ProductName, ProductPrice } from '../utils/receipt.util';
 import { StatusCodes } from 'http-status-codes';
 
 export const scanReceipt = async (req: Request, res: Response) => {
@@ -19,6 +19,8 @@ export const scanReceipt = async (req: Request, res: Response) => {
     logger.info(`successfully formatted receipt`);
 
     res.status(StatusCodes.OK).json(formattedReceipt);
+  } else {
+    res.status(StatusCodes.BAD_REQUEST).send('File is missing');
   }
 };
 
