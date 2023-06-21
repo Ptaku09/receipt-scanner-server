@@ -1,0 +1,17 @@
+FROM node:18-alpine
+WORKDIR /usr/local/apps/receipt-scanner-server/dev
+
+COPY package.json ./
+RUN npm install && npm cache clean --force
+ENV PATH=/usr/local/apps/receipt-scanner-server/node_modules/.bin:$PATH
+
+WORKDIR /usr/local/apps/receipt-scanner-server/dev
+COPY tsconfig.json ./
+
+COPY src ./src
+COPY .env ./
+
+EXPOSE ${PORT}
+
+RUN npm run build
+CMD ["npm", "run", "start:dev"]

@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  receipt-scanner-server:
+    container_name: receipt-scanner-server
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      args:
+        - PORT = ${PORT}
+    ports:
+      - 8081:${PORT}
+    env_file:
+      - .env
+    volumes:
+      - ./:/usr/local/apps/receipt-scanner-server/dev
+      - ignore:/usr/local/apps/receipt-scanner-server/dev/node_modules
+volumes:
+  ignore:
