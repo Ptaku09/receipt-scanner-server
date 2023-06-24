@@ -18,8 +18,6 @@ export const scanReceipt = async (req: Request, res: Response) => {
 
     logger.info(`successfully formatted receipt`);
 
-    logger.info(formattedReceipt);
-
     res.status(StatusCodes.OK).json(formattedReceipt);
   } else {
     res.status(StatusCodes.BAD_REQUEST).send('File is missing');

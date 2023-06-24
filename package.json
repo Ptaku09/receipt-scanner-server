@@ -6,7 +6,6 @@
   "scripts": {
     "build": "tsc",
     "start": "node ./dist/app.js",
-    "start:dev": "node -r dotenv/config ./dist/app.js",
     "start:watch": "nodemon -r dotenv/config ./dist/app.js",
     "dev": "concurrently \"tsc --watch\" \"nodemon -q ./dist/app.js\"",
     "prepare": "husky install",
